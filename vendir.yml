@@ -1,0 +1,21 @@
+apiVersion: vendir.k14s.io/v1alpha1
+kind: Config
+directories:
+  - path: vendor
+    contents:
+      - path: fleet
+        git:
+          depth: 1
+          url: https://github.com/rancher/fleet
+          ref: "v0.16.1"
+        includePaths:
+          - charts/**/*
+  - path: helm/rancher-fleet
+    contents:
+    - path: .
+      directory:
+        path: vendor/fleet/charts/fleet
+      excludePaths:
+        - tests/**
+        - ci/**
+        - values.schema.json

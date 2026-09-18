@@ -1,0 +1,16 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: '[v0.16] - Drop reserved labels during agent-initiated cluster
+        registration (#5604)...'
+      sha: 5823543a3d33952b1c7868eb035ad8e15db420fc
+      tags:
+      - pkg/helmvalues/v0.16.1
+    path: fleet
+  path: vendor
+- contents:
+  - directory: {}
+    path: .
+  path: helm/rancher-fleet
+kind: LockConfig

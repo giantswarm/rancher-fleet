@@ -1,0 +1,13 @@
+diff --git a/helm/rancher-fleet/templates/job_migrate_gitrepo_helmrepourl.yaml b/helm/rancher-fleet/templates/job_migrate_gitrepo_helmrepourl.yaml
+index 03e507a3..afe0206d 100644
+--- a/helm/rancher-fleet/templates/job_migrate_gitrepo_helmrepourl.yaml
++++ b/helm/rancher-fleet/templates/job_migrate_gitrepo_helmrepourl.yaml
+@@ -23,6 +23,8 @@ spec:
+         runAsNonRoot: true
+         runAsGroup: 1000
+         runAsUser: 1000
++        seccompProfile:
++          type: RuntimeDefault
+       containers:
+       - name: migrate
+         image: "{{ template "system_default_registry" . }}{{.Values.image.repository}}:{{.Values.image.tag}}"

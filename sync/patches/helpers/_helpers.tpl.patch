@@ -1,0 +1,28 @@
+diff --git a/helm/rancher-fleet/templates/_helpers.tpl b/helm/rancher-fleet/templates/_helpers.tpl
+index 8ae6e5af..83858743 100644
+--- a/helm/rancher-fleet/templates/_helpers.tpl
++++ b/helm/rancher-fleet/templates/_helpers.tpl
+@@ -60,3 +60,23 @@ resources:
+   {{- end -}}
+ {{- end -}}
+ {{- end -}}
++
++{{/*
++Common labels
++*/}}
++{{- define "labels.common" -}}
++app: {{ include "name" . | quote }}
++{{ include "labels.selector" . }}
++app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
++app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
++application.giantswarm.io/team: {{ index .Chart.Annotations "io.giantswarm.application.team" | quote }}
++helm.sh/chart: {{ include "chart" . | quote }}
++{{- end -}}
++
++{{/*
++Selector labels
++*/}}
++{{- define "labels.selector" -}}
++app.kubernetes.io/name: {{ include "name" . | quote }}
++app.kubernetes.io/instance: {{ .Release.Name | quote }}
++{{- end -}}

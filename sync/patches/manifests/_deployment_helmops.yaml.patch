@@ -1,0 +1,13 @@
+diff --git a/helm/rancher-fleet/templates/deployment_helmops.yaml b/helm/rancher-fleet/templates/deployment_helmops.yaml
+index b210d861..aba0937f 100644
+--- a/helm/rancher-fleet/templates/deployment_helmops.yaml
++++ b/helm/rancher-fleet/templates/deployment_helmops.yaml
+@@ -144,6 +144,8 @@ spec:
+         runAsNonRoot: true
+         runAsUser: 1000
+         runAsGroup: 1000
++        seccompProfile:
++          type: RuntimeDefault
+ {{- end }}
+       volumes:
+         - name: tmp

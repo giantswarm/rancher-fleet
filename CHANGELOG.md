@@ -7,10 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- changed: the chart's team annotation is the `rocket` placeholder (the brace convention of `rancher-fleet`), filled with the team's short name when a repository is created; the default Giant Swarm icon is documented as a default to replace, and the README lists every placeholder ([#66](https://github.com/giantswarm/template-app/issues/66)).
-- added: Artifact Hub metadata (`artifacthub.io/license`, `artifacthub.io/links`) in the chart template ([roadmap#3940](https://github.com/giantswarm/roadmap/issues/3940)).
+### Added
 
-- changed: Regenerated `.circleci` config with `devctl gen circleci` — adopt the dynamic-config setup workflow (`config.yml` + `workflows.yml`) and bump the architect orb to v9.5.2.
-- changed: `app.giantswarm.io` label group was changed to `application.giantswarm.io`
+- Add sync of upstream rancher/fleet chart at `v0.16.1`.
 
 [Unreleased]: https://github.com/giantswarm/rancher-fleet/tree/main
