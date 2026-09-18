@@ -1,23 +1,17 @@
 apiVersion: v2
-# upstream version
-appVersion: 0.16.1
 # giantswarm app version
-version: 0.1.0
-name: rancher-fleet
-description: Fleet Controller - GitOps at Scale
+version: 0.16.1
+name: rancher-fleet-crds
+description: Fleet CRDs
 home: https://github.com/giantswarm/rancher-fleet
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:
   io.giantswarm.application.audience: "giantswarm"
   io.giantswarm.application.managed: "true"
   io.giantswarm.application.team: "rocket"
-  io.giantswarm.application.upstream-chart-url: "https://github.com/rancher/fleet/tree/main/charts/fleet"
-  io.giantswarm.application.upstream-chart-version: "0.16.1"
+  io.giantswarm.application.upstream-chart-url: "https://github.com/rancher/fleet/tree/main/charts/fleet-crd"
 maintainers:
   - name: Team Rocket
     email: team-rocket@giantswarm.io
-dependencies:
-  - name: rancher-fleet-crds
-    version: 0.16.1
 sources:
   - https://github.com/rancher/fleet

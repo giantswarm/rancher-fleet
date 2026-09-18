@@ -1,0 +1,13 @@
+diff --git a/helm/rancher-fleet/templates/job_cleanup_gitrepojobs.yaml b/helm/rancher-fleet/templates/job_cleanup_gitrepojobs.yaml
+index 7d001f12..7a202f3d 100644
+--- a/helm/rancher-fleet/templates/job_cleanup_gitrepojobs.yaml
++++ b/helm/rancher-fleet/templates/job_cleanup_gitrepojobs.yaml
+@@ -26,6 +26,8 @@ spec:
+             runAsNonRoot: true
+             runAsGroup: 1000
+             runAsUser: 1000
++            seccompProfile:
++              type: RuntimeDefault
+           containers:
+           - name: cleanup
+             image: "{{ template "system_default_registry" . }}{{.Values.image.repository}}:{{.Values.image.tag}}"

@@ -1,0 +1,28 @@
+diff --git a/helm/rancher-fleet/values.yaml b/helm/rancher-fleet/values.yaml
+index d4a19700..8ce38bac 100644
+--- a/helm/rancher-fleet/values.yaml
++++ b/helm/rancher-fleet/values.yaml
+@@ -1,4 +1,4 @@
+ image:
+-  repository: rancher/fleet
+-  tag: dev
++  repository: giantswarm/rancher-fleet
++  tag: APP_VERSION_PLACEHOLDER
+   imagePullPolicy: IfNotPresent
+@@ -6,4 +6,4 @@ image:
+ agentImage:
+-  repository: rancher/fleet-agent
+-  tag: dev
++  repository: giantswarm/rancher-fleet-agent
++  tag: APP_VERSION_PLACEHOLDER
+   imagePullPolicy: IfNotPresent
+@@ -65,3 +65,3 @@ bootstrap:
+   # The local cluster will not receive deployments.
+-  localAgentDisabled: false
++  localAgentDisabled: true
+   # Apply extra clusterLabels to the local cluster bootstrapped by fleet-controller
+@@ -79,3 +79,3 @@ global:
+     imagePullSecrets: []
+-    systemDefaultRegistry: ""
++    systemDefaultRegistry: "gsoci.azurecr.io"
+

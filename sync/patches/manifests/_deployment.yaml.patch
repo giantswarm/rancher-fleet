@@ -1,0 +1,13 @@
+diff --git a/helm/rancher-fleet/templates/deployment.yaml b/helm/rancher-fleet/templates/deployment.yaml
+index fa534167..642e4ff5 100644
+--- a/helm/rancher-fleet/templates/deployment.yaml
++++ b/helm/rancher-fleet/templates/deployment.yaml
+@@ -295,6 +295,8 @@ spec:
+         runAsNonRoot: true
+         runAsUser: 1000
+         runAsGroup: 1000
++        seccompProfile:
++          type: RuntimeDefault
+ {{- end }}
+ ---
+ {{- end }}

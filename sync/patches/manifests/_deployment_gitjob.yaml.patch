@@ -1,0 +1,13 @@
+diff --git a/helm/rancher-fleet/templates/deployment_gitjob.yaml b/helm/rancher-fleet/templates/deployment_gitjob.yaml
+index be450761..29ae8811 100644
+--- a/helm/rancher-fleet/templates/deployment_gitjob.yaml
++++ b/helm/rancher-fleet/templates/deployment_gitjob.yaml
+@@ -161,6 +161,8 @@ spec:
+         runAsNonRoot: true
+         runAsUser: 1000
+         runAsGroup: 1000
++        seccompProfile:
++          type: RuntimeDefault
+ {{- end }}
+       volumes:
+         - name: tmp
