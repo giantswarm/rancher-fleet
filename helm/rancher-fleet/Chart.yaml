@@ -1,23 +1,18 @@
-apiVersion: v2
-# upstream version
-appVersion: 0.16.1
-# giantswarm app version
-version: 0.1.0
-name: rancher-fleet
-description: Fleet Controller - GitOps at Scale
-home: https://github.com/giantswarm/rancher-fleet
-icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:
-  io.giantswarm.application.audience: "giantswarm"
-  io.giantswarm.application.managed: "true"
-  io.giantswarm.application.team: "rocket"
-  io.giantswarm.application.upstream-chart-url: "https://github.com/rancher/fleet/tree/main/charts/fleet"
-  io.giantswarm.application.upstream-chart-version: "0.16.1"
-maintainers:
-  - name: Team Rocket
-    email: team-rocket@giantswarm.io
-dependencies:
-  - name: rancher-fleet-crds
-    version: 0.16.1
-sources:
-  - https://github.com/rancher/fleet
+  catalog.cattle.io/auto-install: fleet-crd=match
+  catalog.cattle.io/certified: rancher
+  catalog.cattle.io/experimental: "true"
+  catalog.cattle.io/hidden: "true"
+  catalog.cattle.io/kube-version: '>= 1.34.0-0 < 1.37.0-0'
+  catalog.cattle.io/namespace: cattle-fleet-system
+  catalog.cattle.io/os: linux
+  catalog.cattle.io/permits-os: linux,windows
+  catalog.cattle.io/provides-gvr: clusters.fleet.cattle.io/v1alpha1
+  catalog.cattle.io/rancher-version: '>= 2.15.0-0 < 2.16.0-0'
+  catalog.cattle.io/release-name: fleet
+apiVersion: v2
+appVersion: 0.0.0
+description: Fleet Controller - GitOps at Scale
+icon: https://charts.rancher.io/assets/logos/fleet.svg
+name: fleet
+version: 0.0.0
