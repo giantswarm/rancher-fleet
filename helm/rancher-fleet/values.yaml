@@ -1,11 +1,11 @@
 image:
-  repository: giantswarm/rancher-fleet
-  tag: v0.16.1
+  repository: rancher/fleet
+  tag: dev
   imagePullPolicy: IfNotPresent
 
 agentImage:
-  repository: giantswarm/rancher-fleet-agent
-  tag: v0.16.1
+  repository: rancher/fleet-agent
+  tag: dev
   imagePullPolicy: IfNotPresent
 
 # For cluster registration the public URL of the Kubernetes API server must be set here
@@ -63,7 +63,7 @@ bootstrap:
   # If true, the local cluster stays registered (Cluster + ClusterGroup) but the
   # fleet-agent is NOT deployed into it. An already-running local agent will be removed.
   # The local cluster will not receive deployments.
-  localAgentDisabled: true
+  localAgentDisabled: false
   # Apply extra clusterLabels to the local cluster bootstrapped by fleet-controller
   clusterLabels: {}
   # A repo to add at install time that will deploy to the local cluster. This allows
@@ -77,7 +77,7 @@ bootstrap:
 global:
   cattle:
     imagePullSecrets: []
-    systemDefaultRegistry: "gsoci.azurecr.io"
+    systemDefaultRegistry: ""
 
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
