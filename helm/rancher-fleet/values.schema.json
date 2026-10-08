@@ -1,198 +1,184 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
+    "additionalProperties": false,
     "properties": {
         "additionalKnownHosts": {
-            "type": "array",
-            "title": "additionalKnownHosts",
-            "description": "Adds hosts to the known_hosts configmap if using a custom git provider for gitrepos"
+            "type": "array"
         },
         "affinity": {
             "type": "object",
-            "title": "affinity",
-            "description": "Pod affinity for the controllers."
+            "additionalProperties": false
         },
         "agent": {
             "type": "object",
-            "title": "agent",
-            "description": "Fleet agent configuration",
+            "additionalProperties": false,
             "properties": {
                 "leaderElection": {
                     "type": "object",
-                    "title": "leaderElection",
-                    "description": "Leader election configuration",
+                    "additionalProperties": false,
                     "properties": {
                         "leaseDuration": {
-                            "type": "string",
-                            "title": "leaseDuration"
+                            "type": "string"
                         },
                         "renewDeadline": {
-                            "type": "string",
-                            "title": "renewDeadline"
+                            "type": "string"
                         },
                         "retryPeriod": {
-                            "type": "string",
-                            "title": "retryPeriod"
+                            "type": "string"
                         }
                     }
                 },
                 "reconciler": {
                     "type": "object",
-                    "title": "reconciler",
+                    "additionalProperties": false,
                     "properties": {
                         "workers": {
                             "type": "object",
-                            "title": "workers",
-                            "description": "The number of workers that are allowed for each type of reconciler",
+                            "additionalProperties": false,
                             "properties": {
                                 "bundledeployment": {
-                                    "type": "string",
-                                    "title": "bundledeployment"
+                                    "type": "string"
                                 },
                                 "drift": {
-                                    "type": "string",
-                                    "title": "drift"
+                                    "type": "string"
                                 }
                             }
                         }
                     }
                 },
                 "replicas": {
-                    "type": "integer",
-                    "title": "replicas"
+                    "type": "integer"
                 }
             }
         },
         "agentCheckinInterval": {
-            "type": "string",
-            "title": "agentCheckinInterval",
-            "description": "A duration string for how often agents should report a heartbeat"
+            "type": "string"
         },
         "agentImage": {
             "type": "object",
-            "title": "agentImage",
+            "additionalProperties": false,
             "properties": {
                 "imagePullPolicy": {
-                    "type": "string",
-                    "title": "imagePullPolicy"
+                    "type": "string"
                 },
                 "repository": {
-                    "type": "string",
-                    "title": "repository"
+                    "type": "string"
                 },
                 "tag": {
-                    "type": "string",
-                    "title": "tag"
+                    "type": "string"
                 }
             }
         },
         "agentTLSMode": {
-            "type": "string",
-            "title": "agentTLSMode",
-            "description": "Determines whether the agent should trust CA bundles from the operating system's trust store when connecting to a management cluster. True in `system-store` mode, false in `strict` mode."
+            "type": "string"
         },
         "apiServerCA": {
-            "type": "string",
-            "title": "apiServerCA",
-            "description": "For cluster registration the pem encoded value of the CA of the Kubernetes API server must be set here. If left empty it is assumed this Kubernetes API TLS is signed by a well known CA."
+            "type": "string"
         },
         "apiServerURL": {
-            "type": "string",
-            "title": "apiServerURL",
-            "description": "For cluster registration the public URL of the Kubernetes API server must be set here Example: https://example.com:6443"
+            "type": "string"
+        },
+        "baseDomain": {
+            "type": "string"
         },
         "bootstrap": {
             "type": "object",
-            "title": "bootstrap",
+            "additionalProperties": false,
             "properties": {
                 "agentNamespace": {
-                    "type": "string",
-                    "title": "agentNamespace",
-                    "description": "The namespace where the fleet agent for the local cluster will be ran, if empty this will default to cattle-fleet-system"
+                    "type": "string"
                 },
                 "branch": {
-                    "type": "string",
-                    "title": "branch"
+                    "type": "string"
                 },
                 "clusterLabels": {
                     "type": "object",
-                    "title": "clusterLabels",
-                    "description": "Apply extra clusterLabels to the local cluster bootstrapped by fleet-controller"
+                    "additionalProperties": false
                 },
                 "enabled": {
-                    "type": "boolean",
-                    "title": "enabled"
+                    "type": "boolean"
                 },
                 "localAgentDisabled": {
-                    "type": "boolean",
-                    "title": "localAgentDisabled",
-                    "description": "If true, the local cluster stays registered (Cluster + ClusterGroup) but the fleet-agent is NOT deployed into it. An already-running local agent will be removed. The local cluster will not receive deployments."
+                    "type": "boolean"
                 },
                 "namespace": {
-                    "type": "string",
-                    "title": "namespace",
-                    "description": "The namespace that will be autocreated and the local cluster will be registered in"
+                    "type": "string"
                 },
                 "paths": {
-                    "type": "string",
-                    "title": "paths"
+                    "type": "string"
                 },
                 "repo": {
-                    "type": "string",
-                    "title": "repo",
-                    "description": "A repo to add at install time that will deploy to the local cluster. This allows one to fully bootstrap fleet, its configuration and all its downstream clusters in one shot."
+                    "type": "string"
                 },
                 "secret": {
-                    "type": "string",
-                    "title": "secret"
+                    "type": "string"
                 }
             }
         },
+        "bootstrapMode": {
+            "type": "object",
+            "additionalProperties": true
+        },
+        "chartOperator": {
+            "type": "object",
+            "additionalProperties": true
+        },
+        "ciliumNetworkPolicy": {
+            "type": "object",
+            "additionalProperties": true
+        },
+        "cluster": {
+            "type": "object",
+            "additionalProperties": true
+        },
+        "clusterCA": {
+            "type": "string"
+        },
+        "clusterCIDR": {
+            "type": "string"
+        },
+        "clusterDNSIP": {
+            "type": "string"
+        },
+        "clusterID": {
+            "type": "string"
+        },
         "controller": {
             "type": "object",
-            "title": "controller",
-            "description": "# Fleet controller configuration",
+            "additionalProperties": false,
             "properties": {
                 "reconciler": {
                     "type": "object",
-                    "title": "reconciler",
+                    "additionalProperties": false,
                     "properties": {
                         "workers": {
                             "type": "object",
-                            "title": "workers",
-                            "description": "The number of workers that are allowed to each type of reconciler",
+                            "additionalProperties": false,
                             "properties": {
                                 "bundle": {
-                                    "type": "string",
-                                    "title": "bundle"
+                                    "type": "string"
                                 },
                                 "bundledeployment": {
-                                    "type": "string",
-                                    "title": "bundledeployment"
+                                    "type": "string"
                                 },
                                 "cluster": {
-                                    "type": "string",
-                                    "title": "cluster"
+                                    "type": "string"
                                 },
                                 "clustergroup": {
-                                    "type": "string",
-                                    "title": "clustergroup"
+                                    "type": "string"
                                 },
                                 "content": {
-                                    "type": "string",
-                                    "title": "content"
+                                    "type": "string"
                                 },
                                 "gitrepo": {
-                                    "type": "string",
-                                    "title": "gitrepo"
+                                    "type": "string"
                                 },
                                 "imagescan": {
-                                    "type": "string",
-                                    "title": "imagescan"
+                                    "type": "string"
                                 },
                                 "schedule": {
-                                    "type": "string",
-                                    "title": "schedule"
+                                    "type": "string"
                                 }
                             }
                         }
@@ -200,82 +186,70 @@
                 },
                 "registrationTokenTTL": {
                     "type": "object",
-                    "title": "registrationTokenTTL",
+                    "additionalProperties": false,
                     "properties": {
                         "required": {
-                            "type": "boolean",
-                            "title": "required"
+                            "type": "boolean"
                         }
                     }
                 },
                 "replicas": {
-                    "type": "integer",
-                    "title": "replicas"
+                    "type": "integer"
                 }
             }
         },
         "debug": {
-            "type": "boolean",
-            "title": "debug"
+            "type": "boolean"
         },
         "debugLevel": {
-            "type": "integer",
-            "title": "debugLevel"
+            "type": "integer"
         },
         "disableSecurityContext": {
-            "type": "boolean",
-            "title": "disableSecurityContext"
+            "type": "boolean"
         },
         "garbageCollectionInterval": {
-            "type": "string",
-            "title": "garbageCollectionInterval",
-            "description": "The amount of time that agents will wait before they clean up old Helm releases. A non-existent value or 0 will result in an interval of 15 minutes."
+            "type": "string"
+        },
+        "gcpProject": {
+            "type": "string"
         },
         "gitClientTimeout": {
-            "type": "string",
-            "title": "gitClientTimeout",
-            "description": "The amount of time to wait for a response from the server before canceling the request.  Used to retrieve the latest commit of configured git repositories. A non-existent value or 0 will result in a timeout of 30 seconds."
+            "type": "string"
         },
         "gitjob": {
             "type": "object",
-            "title": "gitjob",
+            "additionalProperties": false,
             "properties": {
                 "replicas": {
-                    "type": "integer",
-                    "title": "replicas"
+                    "type": "integer"
                 }
             }
         },
         "gitops": {
             "type": "object",
-            "title": "gitops",
+            "additionalProperties": false,
             "properties": {
                 "enabled": {
-                    "type": "boolean",
-                    "title": "enabled"
+                    "type": "boolean"
                 },
                 "syncPeriod": {
-                    "type": "string",
-                    "title": "syncPeriod",
-                    "description": "syncPeriod is used to pick up polling for lost gitrepo events. It should be larger than the largest gitrepo pollinginterval."
+                    "type": "string"
                 }
             }
         },
         "global": {
             "type": "object",
-            "title": "global",
+            "additionalProperties": false,
             "properties": {
                 "cattle": {
                     "type": "object",
-                    "title": "cattle",
+                    "additionalProperties": false,
                     "properties": {
                         "imagePullSecrets": {
-                            "type": "array",
-                            "title": "imagePullSecrets"
+                            "type": "array"
                         },
                         "systemDefaultRegistry": {
-                            "type": "string",
-                            "title": "systemDefaultRegistry"
+                            "type": "string"
                         }
                     }
                 }
@@ -283,132 +257,115 @@
         },
         "helmops": {
             "type": "object",
-            "title": "helmops",
+            "additionalProperties": false,
             "properties": {
                 "enabled": {
-                    "type": "boolean",
-                    "title": "enabled"
+                    "type": "boolean"
                 },
                 "replicas": {
-                    "type": "integer",
-                    "title": "replicas"
+                    "type": "integer"
                 }
             }
         },
         "ignoreClusterRegistrationLabels": {
-            "type": "boolean",
-            "title": "ignoreClusterRegistrationLabels",
-            "description": "Whether you want to allow cluster upon registration to specify their labels."
+            "type": "boolean"
         },
         "image": {
             "type": "object",
-            "title": "image",
+            "additionalProperties": false,
             "properties": {
                 "imagePullPolicy": {
-                    "type": "string",
-                    "title": "imagePullPolicy"
+                    "type": "string"
                 },
                 "repository": {
-                    "type": "string",
-                    "title": "repository"
+                    "type": "string"
                 },
                 "tag": {
-                    "type": "string",
-                    "title": "tag"
+                    "type": "string"
                 }
             }
         },
         "imagescan": {
             "type": "object",
-            "title": "imagescan",
-            "description": "When enabled, the imagescan controller will run to monitor image repositories. If disabled, config files (e.g. fleet.yaml) containing non-empty imageScan fields will result in errors. This option may be deprecated in a future release, and imagescan removed.",
+            "additionalProperties": false,
             "properties": {
                 "enabled": {
-                    "type": "boolean",
-                    "title": "enabled"
+                    "type": "boolean"
                 }
             }
         },
         "insecureSkipHostKeyChecks": {
-            "type": "boolean",
-            "title": "insecureSkipHostKeyChecks",
-            "description": "Determines whether SSH operations (eg. cloning git repos, downloading Helm charts) could succeed if host verification fails. Insecure when set to true."
+            "type": "boolean"
         },
         "leaderElection": {
             "type": "object",
-            "title": "leaderElection",
-            "description": "# Leader election configuration",
+            "additionalProperties": false,
             "properties": {
                 "leaseDuration": {
-                    "type": "string",
-                    "title": "leaseDuration"
+                    "type": "string"
                 },
                 "renewDeadline": {
-                    "type": "string",
-                    "title": "renewDeadline"
+                    "type": "string"
                 },
                 "retryPeriod": {
-                    "type": "string",
-                    "title": "retryPeriod"
+                    "type": "string"
                 }
             }
         },
         "metrics": {
             "type": "object",
-            "title": "metrics",
+            "additionalProperties": false,
             "properties": {
                 "enabled": {
-                    "type": "boolean",
-                    "title": "enabled"
+                    "type": "boolean"
                 }
             }
         },
         "migrations": {
             "type": "object",
-            "title": "migrations",
+            "additionalProperties": false,
             "properties": {
                 "clusterRegistrationCleanup": {
-                    "type": "boolean",
-                    "title": "clusterRegistrationCleanup"
+                    "type": "boolean"
                 },
                 "gitrepoHelmURLRegexMigration": {
-                    "type": "boolean",
-                    "title": "gitrepoHelmURLRegexMigration"
+                    "type": "boolean"
                 },
                 "gitrepoJobsCleanup": {
-                    "type": "boolean",
-                    "title": "gitrepoJobsCleanup"
+                    "type": "boolean"
                 }
             }
         },
         "noProxy": {
-            "type": "string",
-            "title": "noProxy",
-            "description": "comma separated list of domains or ip addresses that will not use the proxy"
+            "type": "string"
         },
         "nodeSelector": {
             "type": "object",
-            "title": "nodeSelector",
-            "description": "# Node labels for pod assignment. Ref: https://kubernetes.io/docs/user-guide/node-selection/"
+            "additionalProperties": false
         },
         "priorityClassName": {
-            "type": "string",
-            "title": "priorityClassName",
-            "description": "PriorityClassName assigned to deployment."
+            "type": "string"
         },
         "propagateDebugSettingsToAgents": {
-            "type": "boolean",
-            "title": "propagateDebugSettingsToAgents"
+            "type": "boolean"
+        },
+        "provider": {
+            "type": "string"
+        },
+        "rancher-fleet-crds": {
+            "type": "object",
+            "description": "The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency.",
+            "additionalProperties": true
         },
         "resources": {
             "type": "object",
-            "title": "resources",
-            "description": "Container resource limits and requests for the controllers"
+            "additionalProperties": false
+        },
+        "subscriptionID": {
+            "type": "string"
         },
         "tolerations": {
-            "type": "array",
-            "title": "tolerations",
-            "description": "List of node taints to tolerate."
+            "type": "array"
         }
     }
 }
