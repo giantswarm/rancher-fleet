@@ -11,4 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add sync of upstream rancher/fleet chart at `v0.16.1`.
 
+### Fixed
+
+- Declare the `rancher-fleet-crds` subchart key in `values.yaml`, so the values schema accepts the key Helm adds for the dependency.
+
 [Unreleased]: https://github.com/giantswarm/rancher-fleet/tree/main

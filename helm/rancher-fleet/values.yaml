@@ -79,6 +79,9 @@ global:
     imagePullSecrets: []
     systemDefaultRegistry: "gsoci.azurecr.io"
 
+# -- The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency.
+rancher-fleet-crds: {}  # @schema additionalProperties: true
+
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 ##
