@@ -155,6 +155,7 @@ Properties within the `.migrations` top-level object
 | `nodeSelector` | **nodeSelector** - # Node labels for pod assignment. Ref: https://kubernetes.io/docs/user-guide/node-selection/|**Type:** `object`<br/>|
 | `priorityClassName` | **priorityClassName** - PriorityClassName assigned to deployment.|**Type:** `string`<br/>|
 | `propagateDebugSettingsToAgents` | **propagateDebugSettingsToAgents**|**Type:** `boolean`<br/>|
+| `rancher-fleet-crds` | **rancher-fleet-crds** - Values passed to the rancher-fleet-crds subchart|**Type:** `object`<br/>|
 | `resources` | **resources** - Container resource limits and requests for the controllers|**Type:** `object`<br/>|
 | `tolerations` | **tolerations** - List of node taints to tolerate.|**Type:** `array`<br/>|
 

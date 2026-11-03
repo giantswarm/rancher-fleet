@@ -400,6 +400,11 @@
             "type": "boolean",
             "title": "propagateDebugSettingsToAgents"
         },
+        "rancher-fleet-crds": {
+            "type": "object",
+            "title": "rancher-fleet-crds",
+            "description": "Values passed to the rancher-fleet-crds subchart"
+        },
         "resources": {
             "type": "object",
             "title": "resources",

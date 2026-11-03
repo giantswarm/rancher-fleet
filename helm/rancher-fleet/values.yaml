@@ -235,3 +235,6 @@ agent:
 #   helmops:
 #     new-annotation: "new-annotation-value"
 #     new-annotation-2: "new-annotation-value-2"
+
+# -- The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency.
+rancher-fleet-crds: {}  # @schema additionalProperties: true
