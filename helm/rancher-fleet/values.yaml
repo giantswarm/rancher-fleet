@@ -1,11 +1,11 @@
 image:
-  repository: rancher/fleet
-  tag: dev
+  repository: giantswarm/rancher-fleet
+  tag: v0.16.3
   imagePullPolicy: IfNotPresent
 
 agentImage:
-  repository: rancher/fleet-agent
-  tag: dev
+  repository: giantswarm/rancher-fleet-agent
+  tag: v0.16.3
   imagePullPolicy: IfNotPresent
 
 # For cluster registration the public URL of the Kubernetes API server must be set here
@@ -76,7 +76,7 @@ bootstrap:
   # If true, the local cluster stays registered (Cluster + ClusterGroup) but the
   # fleet-agent is NOT deployed into it. An already-running local agent will be removed.
   # The local cluster will not receive deployments.
-  localAgentDisabled: false
+  localAgentDisabled: true
   # Apply extra clusterLabels to the local cluster bootstrapped by fleet-controller
   clusterLabels: {}
   # A repo to add at install time that will deploy to the local cluster. This allows
@@ -90,7 +90,7 @@ bootstrap:
 global:
   cattle:
     imagePullSecrets: []
-    systemDefaultRegistry: ""
+    systemDefaultRegistry: "gsoci.azurecr.io"
 
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
@@ -248,3 +248,6 @@ agent:
 #   helmops:
 #     new-annotation: "new-annotation-value"
 #     new-annotation-2: "new-annotation-value-2"
+
+# -- The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency.
+rancher-fleet-crds: {}  # @schema additionalProperties: true
