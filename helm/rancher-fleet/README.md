@@ -1,211 +1,92 @@
-<!-- DOCS_START -->
+# rancher-fleet
 
-### agent
-Properties within the `.agent` top-level object
+Fleet Controller - GitOps at Scale
 
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `agent.leaderElection` |**None**|**Type:** `object`<br/>|
-| `agent.leaderElection.leaseDuration` |**None**|**Type:** `string`<br/>|
-| `agent.leaderElection.renewDeadline` |**None**|**Type:** `string`<br/>|
-| `agent.leaderElection.retryPeriod` |**None**|**Type:** `string`<br/>|
-| `agent.reconciler` |**None**|**Type:** `object`<br/>|
-| `agent.reconciler.workers` |**None**|**Type:** `object`<br/>|
-| `agent.reconciler.workers.bundledeployment` |**None**|**Type:** `string`<br/>|
-| `agent.reconciler.workers.drift` |**None**|**Type:** `string`<br/>|
-| `agent.replicas` |**None**|**Type:** `integer`<br/>|
+**Homepage:** <https://github.com/giantswarm/rancher-fleet>
 
-### agentImage
-Properties within the `.agentImage` top-level object
+## Maintainers
 
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `agentImage.imagePullPolicy` |**None**|**Type:** `string`<br/>|
-| `agentImage.repository` |**None**|**Type:** `string`<br/>|
-| `agentImage.tag` |**None**|**Type:** `string`<br/>|
+| Name | Email | Url |
+| ---- | ------ | --- |
+| Team Rocket | <team-rocket@giantswarm.io> |  |
 
-### bootstrap
-Properties within the `.bootstrap` top-level object
+## Source Code
 
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `bootstrap.agentNamespace` |**None**|**Type:** `string`<br/>|
-| `bootstrap.branch` |**None**|**Type:** `string`<br/>|
-| `bootstrap.clusterLabels` |**None**|**Type:** `object`<br/>|
-| `bootstrap.enabled` |**None**|**Type:** `boolean`<br/>|
-| `bootstrap.localAgentDisabled` |**None**|**Type:** `boolean`<br/>|
-| `bootstrap.namespace` |**None**|**Type:** `string`<br/>|
-| `bootstrap.paths` |**None**|**Type:** `string`<br/>|
-| `bootstrap.repo` |**None**|**Type:** `string`<br/>|
-| `bootstrap.secret` |**None**|**Type:** `string`<br/>|
+* <https://github.com/rancher/fleet>
 
-### bootstrapMode
-Properties within the `.bootstrapMode` top-level object
+## Requirements
 
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
+| Repository | Name | Version |
+|------------|------|---------|
+|  | rancher-fleet-crds | 0.16.1 |
 
-### cattle
-Properties within the `.global.cattle` object
+## Values
 
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `global.cattle.imagePullSecrets` |**None**|**Type:** `array`<br/>|
-| `global.cattle.systemDefaultRegistry` |**None**|**Type:** `string`<br/>|
-
-### chartOperator
-Properties within the `.chartOperator` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-
-### ciliumNetworkPolicy
-Properties within the `.ciliumNetworkPolicy` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-
-### cluster
-Properties within the `.cluster` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-
-### controller
-Properties within the `.controller` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `controller.reconciler` |**None**|**Type:** `object`<br/>|
-| `controller.reconciler.workers` |**None**|**Type:** `object`<br/>|
-| `controller.reconciler.workers.bundle` |**None**|**Type:** `string`<br/>|
-| `controller.reconciler.workers.bundledeployment` |**None**|**Type:** `string`<br/>|
-| `controller.reconciler.workers.cluster` |**None**|**Type:** `string`<br/>|
-| `controller.reconciler.workers.clustergroup` |**None**|**Type:** `string`<br/>|
-| `controller.reconciler.workers.content` |**None**|**Type:** `string`<br/>|
-| `controller.reconciler.workers.gitrepo` |**None**|**Type:** `string`<br/>|
-| `controller.reconciler.workers.imagescan` |**None**|**Type:** `string`<br/>|
-| `controller.reconciler.workers.schedule` |**None**|**Type:** `string`<br/>|
-| `controller.registrationTokenTTL` |**None**|**Type:** `object`<br/>|
-| `controller.registrationTokenTTL.required` |**None**|**Type:** `boolean`<br/>|
-| `controller.replicas` |**None**|**Type:** `integer`<br/>|
-
-### gitjob
-Properties within the `.gitjob` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `gitjob.replicas` |**None**|**Type:** `integer`<br/>|
-
-### gitops
-Properties within the `.gitops` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `gitops.enabled` |**None**|**Type:** `boolean`<br/>|
-| `gitops.syncPeriod` |**None**|**Type:** `string`<br/>|
-
-### helm
-Properties within the `.helm` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-
-### helmops
-Properties within the `.helmops` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `helmops.enabled` |**None**|**Type:** `boolean`<br/>|
-| `helmops.replicas` |**None**|**Type:** `integer`<br/>|
-
-### image
-Properties within the `.image` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `image.imagePullPolicy` |**None**|**Type:** `string`<br/>|
-| `image.repository` |**None**|**Type:** `string`<br/>|
-| `image.tag` |**None**|**Type:** `string`<br/>|
-
-### imagescan
-Properties within the `.imagescan` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `imagescan.enabled` |**None**|**Type:** `boolean`<br/>|
-
-### leaderElection
-Properties within the `.leaderElection` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `leaderElection.leaseDuration` |**None**|**Type:** `string`<br/>|
-| `leaderElection.renewDeadline` |**None**|**Type:** `string`<br/>|
-| `leaderElection.retryPeriod` |**None**|**Type:** `string`<br/>|
-
-### metrics
-Properties within the `.metrics` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `metrics.enabled` |**None**|**Type:** `boolean`<br/>|
-
-### migrations
-Properties within the `.migrations` top-level object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `migrations.clusterRegistrationCleanup` |**None**|**Type:** `boolean`<br/>|
-| `migrations.gitrepoHelmURLRegexMigration` |**None**|**Type:** `boolean`<br/>|
-| `migrations.gitrepoJobsCleanup` |**None**|**Type:** `boolean`<br/>|
-
-### podSecurityStandards
-Properties within the `.global.podSecurityStandards` object
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-
-### rancher-fleet-crds
-Properties within the `.rancher-fleet-crds` top-level object
-The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency.
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-
-### Other
-
-| **Property** | **Description** | **More Details** |
-| :----------- | :-------------- | :--------------- |
-| `additionalKnownHosts` |**None**|**Type:** `array`<br/>|
-| `affinity` |**None**|**Type:** `object`<br/>|
-| `agentCheckinInterval` |**None**|**Type:** `string`<br/>|
-| `agentTLSMode` |**None**|**Type:** `string`<br/>|
-| `apiServerCA` |**None**|**Type:** `string`<br/>|
-| `apiServerURL` |**None**|**Type:** `string`<br/>|
-| `baseDomain` |**None**|**Type:** `string`<br/>|
-| `clusterCA` |**None**|**Type:** `string`<br/>|
-| `clusterCIDR` |**None**|**Type:** `string`<br/>|
-| `clusterDNSIP` |**None**|**Type:** `string`<br/>|
-| `clusterID` |**None**|**Type:** `string`<br/>|
-| `debug` |**None**|**Type:** `boolean`<br/>|
-| `debugLevel` |**None**|**Type:** `integer`<br/>|
-| `disableSecurityContext` |**None**|**Type:** `boolean`<br/>|
-| `externalDNSIP` |**None**|**Type:** `string`<br/>|
-| `garbageCollectionInterval` |**None**|**Type:** `string`<br/>|
-| `gcpProject` |**None**|**Type:** `string`<br/>|
-| `gitClientTimeout` |**None**|**Type:** `string`<br/>|
-| `ignoreClusterRegistrationLabels` |**None**|**Type:** `boolean`<br/>|
-| `insecureSkipHostKeyChecks` |**None**|**Type:** `boolean`<br/>|
-| `managementCluster` |**None**|**Type:** `string`<br/>|
-| `noProxy` |**None**|**Type:** `string`<br/>|
-| `nodeSelector` |**None**|**Type:** `object`<br/>|
-| `priorityClassName` |**None**|**Type:** `string`<br/>|
-| `propagateDebugSettingsToAgents` |**None**|**Type:** `boolean`<br/>|
-| `provider` |**None**|**Type:** `string`<br/>|
-| `resources` |**None**|**Type:** `object`<br/>|
-| `subscriptionID` |**None**|**Type:** `string`<br/>|
-| `tolerations` |**None**|**Type:** `array`<br/>|
-
-
-<!-- DOCS_END -->
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| image.repository | string | `"giantswarm/rancher-fleet"` |  |
+| image.tag | string | `"v0.16.1"` |  |
+| image.imagePullPolicy | string | `"IfNotPresent"` |  |
+| agentImage.repository | string | `"giantswarm/rancher-fleet-agent"` |  |
+| agentImage.tag | string | `"v0.16.1"` |  |
+| agentImage.imagePullPolicy | string | `"IfNotPresent"` |  |
+| apiServerURL | string | `""` |  |
+| apiServerCA | string | `""` |  |
+| agentTLSMode | string | `"system-store"` |  |
+| agentCheckinInterval | string | `"15m"` |  |
+| garbageCollectionInterval | string | `"15m"` |  |
+| ignoreClusterRegistrationLabels | bool | `false` |  |
+| noProxy | string | `"127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local"` |  |
+| gitClientTimeout | string | `"30s"` |  |
+| bootstrap.enabled | bool | `true` |  |
+| bootstrap.namespace | string | `"fleet-local"` |  |
+| bootstrap.agentNamespace | string | `""` |  |
+| bootstrap.localAgentDisabled | bool | `true` |  |
+| bootstrap.clusterLabels | object | `{}` |  |
+| bootstrap.repo | string | `""` |  |
+| bootstrap.secret | string | `""` |  |
+| bootstrap.branch | string | `"master"` |  |
+| bootstrap.paths | string | `""` |  |
+| global.cattle.imagePullSecrets | list | `[]` |  |
+| global.cattle.systemDefaultRegistry | string | `"gsoci.azurecr.io"` |  |
+| nodeSelector | object | `{}` |  |
+| tolerations | list | `[]` |  |
+| affinity | object | `{}` |  |
+| resources | object | `{}` |  |
+| priorityClassName | string | `""` |  |
+| insecureSkipHostKeyChecks | bool | `false` |  |
+| additionalKnownHosts | list | `[]` |  |
+| gitops.enabled | bool | `true` |  |
+| gitops.syncPeriod | string | `"2h"` |  |
+| metrics.enabled | bool | `true` |  |
+| debug | bool | `false` |  |
+| debugLevel | int | `0` |  |
+| propagateDebugSettingsToAgents | bool | `true` |  |
+| disableSecurityContext | bool | `false` |  |
+| migrations.clusterRegistrationCleanup | bool | `true` |  |
+| migrations.gitrepoJobsCleanup | bool | `true` |  |
+| migrations.gitrepoHelmURLRegexMigration | bool | `true` |  |
+| leaderElection.leaseDuration | string | `"30s"` |  |
+| leaderElection.retryPeriod | string | `"10s"` |  |
+| leaderElection.renewDeadline | string | `"25s"` |  |
+| controller.replicas | int | `1` |  |
+| controller.registrationTokenTTL.required | bool | `false` |  |
+| controller.reconciler.workers.gitrepo | string | `"50"` |  |
+| controller.reconciler.workers.bundle | string | `"50"` |  |
+| controller.reconciler.workers.bundledeployment | string | `"50"` |  |
+| controller.reconciler.workers.cluster | string | `"50"` |  |
+| controller.reconciler.workers.clustergroup | string | `"50"` |  |
+| controller.reconciler.workers.imagescan | string | `"50"` |  |
+| controller.reconciler.workers.schedule | string | `"50"` |  |
+| controller.reconciler.workers.content | string | `"50"` |  |
+| gitjob.replicas | int | `1` |  |
+| helmops.enabled | bool | `true` |  |
+| helmops.replicas | int | `1` |  |
+| imagescan.enabled | bool | `false` |  |
+| agent.replicas | int | `1` |  |
+| agent.reconciler.workers.bundledeployment | string | `"50"` |  |
+| agent.reconciler.workers.drift | string | `"50"` |  |
+| agent.leaderElection.leaseDuration | string | `"30s"` |  |
+| agent.leaderElection.retryPeriod | string | `"10s"` |  |
+| agent.leaderElection.renewDeadline | string | `"25s"` |  |
+| rancher-fleet-crds | object | `{}` | The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency. |
