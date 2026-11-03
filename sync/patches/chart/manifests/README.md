@@ -134,6 +134,13 @@ Properties within the `.migrations` top-level object
 | `migrations.gitrepoHelmURLRegexMigration` | **gitrepoHelmURLRegexMigration**|**Type:** `boolean`<br/>|
 | `migrations.gitrepoJobsCleanup` | **gitrepoJobsCleanup**|**Type:** `boolean`<br/>|
 
+### rancher-fleet-crds
+Properties within the `.rancher-fleet-crds` top-level object
+The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency.
+
+| **Property** | **Description** | **More Details** |
+| :----------- | :-------------- | :--------------- |
+
 ### Other
 
 | **Property** | **Description** | **More Details** |
