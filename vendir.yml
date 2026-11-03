@@ -19,3 +19,4 @@ directories:
         - tests/**
         - ci/**
         - values.schema.json
+        - README.md.gotmpl
