@@ -2,7 +2,7 @@ apiVersion: v2
 # upstream version
 appVersion: 0.16.1
 # giantswarm app version
-version: 0.1.0
+version: 0.0.0
 name: rancher-fleet
 description: Fleet Controller - GitOps at Scale
 home: https://github.com/giantswarm/rancher-fleet

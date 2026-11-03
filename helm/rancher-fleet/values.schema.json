@@ -367,6 +367,11 @@
         "provider": {
             "type": "string"
         },
+        "rancher-fleet-crds": {
+            "type": "object",
+            "description": "The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency.",
+            "additionalProperties": true
+        },
         "resources": {
             "type": "object",
             "additionalProperties": false

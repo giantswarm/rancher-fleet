@@ -1,5 +1,5 @@
 diff --git a/helm/rancher-fleet/values.yaml b/helm/rancher-fleet/values.yaml
-index d4a19700..8ce38bac 100644
+index d4a19700..3de71428 100644
 --- a/helm/rancher-fleet/values.yaml
 +++ b/helm/rancher-fleet/values.yaml
 @@ -1,4 +1,4 @@
@@ -25,4 +25,9 @@ index d4a19700..8ce38bac 100644
      imagePullSecrets: []
 -    systemDefaultRegistry: ""
 +    systemDefaultRegistry: "gsoci.azurecr.io"
-
+ 
+@@ -237 +237,4 @@ agent:
+ #     new-annotation-2: "new-annotation-value-2"
++
++# -- The rancher-fleet-crds subchart takes no values; Helm adds this key, with `global` inside, for every dependency.
++rancher-fleet-crds: {}  # @schema additionalProperties: true
