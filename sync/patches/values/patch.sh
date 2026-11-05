@@ -14,9 +14,13 @@ UPSTREAM_SYNC_VERSION=$(yq -r .directories[0].contents[0].git.ref ${REPO_DIR}/ve
 
 set -x
 cp "${SCRIPT_DIR_REL}"/manifests/schema.yaml "${CHART_DIR}"/.schema.yaml
+
+# patch the values file
+git apply "${SCRIPT_DIR_REL}/_values.yaml.patch"
+{ set +x; } 2>/dev/null
 cp "${SCRIPT_DIR_REL}"/manifests/zz_generated.app-platform.values.yaml "${CHART_DIR}"/
 
-# generate the values schema
+# generate the values schema from the values file
 helm schema --config helm/rancher-fleet/.schema.yaml -o "${CHART_DIR}"/values.schema.json
 
 # mutate the generated values schema, changes `additionalProperties: false` > `unevaluatedProperties: false`.
@@ -24,8 +28,5 @@ python3 -c 'import json,sys; h=lambda o: {**{k:v for k,v in o.items() if k!="add
 
 # normalize the generated schema
 schemalint normalize "${CHART_DIR}"/values.schema.json -o "${CHART_DIR}"/values.schema.json --force
-
-git apply "${SCRIPT_DIR_REL}/_values.yaml.patch"
-{ set +x; } 2>/dev/null
 
 sed -i -E "s/APP_VERSION_PLACEHOLDER/${UPSTREAM_SYNC_VERSION}/g" "${CHART_DIR}/values.yaml"
