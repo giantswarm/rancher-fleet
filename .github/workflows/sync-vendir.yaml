@@ -50,6 +50,16 @@ jobs:
           binary_new_name: "yq"
           smoke_test: "${binary} --version"
 
+      - name: Install schemadocs
+        uses: giantswarm/install-binary-action@5bef88f65012037dd836117c8d344b21bb559854 # v4.1.0
+        with:
+          binary: "schemadocs"
+          # repo: giantswarm/schemadocs
+          version: "0.4.0"
+          download_url: "https://github.com/giantswarm/schemadocs/releases/download/v${version}/schemadocs-v${version}-linux-amd64.tar.gz"
+          binary_new_name: "schemadocs"
+          smoke_test: "${binary} --version"
+
       # the CRD patch compares the vendored CRDs against the default branch
       - name: Fetch the default branch
         run: git fetch --depth=1 origin +refs/heads/main:refs/remotes/origin/main
