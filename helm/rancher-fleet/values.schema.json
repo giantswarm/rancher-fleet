@@ -73,6 +73,12 @@
         "agentTLSMode": {
             "type": "string"
         },
+        "allowClusterRegistrationTokenChange": {
+            "type": "boolean"
+        },
+        "allowUnlabeledKubeConfigSecretNamespaces": {
+            "type": "boolean"
+        },
         "apiServerCA": {
             "type": "string"
         },
@@ -207,9 +213,6 @@
         "disableSecurityContext": {
             "type": "boolean"
         },
-        "externalDNSIP": {
-            "type": "string"
-        },
         "garbageCollectionInterval": {
             "type": "string"
         },
@@ -242,8 +245,7 @@
         },
         "global": {
             "type": "object",
-            "description": "Global values shared between all subcharts and the platform.",
-            "additionalProperties": true,
+            "additionalProperties": false,
             "properties": {
                 "cattle": {
                     "type": "object",
@@ -256,16 +258,8 @@
                             "type": "string"
                         }
                     }
-                },
-                "podSecurityStandards": {
-                    "type": "object",
-                    "additionalProperties": true
                 }
             }
-        },
-        "helm": {
-            "type": "object",
-            "additionalProperties": true
         },
         "helmops": {
             "type": "object",
@@ -323,9 +317,6 @@
                     "type": "string"
                 }
             }
-        },
-        "managementCluster": {
-            "type": "string"
         },
         "metrics": {
             "type": "object",

@@ -11,4 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add sync of upstream rancher/fleet chart at `v0.16.1`.
 
+### Changed
+
+- Update upstream fleet chart to v0.16.3.
+
 [Unreleased]: https://github.com/giantswarm/rancher-fleet/tree/main

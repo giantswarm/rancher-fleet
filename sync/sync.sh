@@ -21,6 +21,8 @@ for program in "${PROGRAMS[@]}"; do
     fi
 done
 
+helm plugin install --verify=false https://github.com/losisin/helm-values-schema-json.git || true
+
 # patches
 ./sync/patches/chart/patch.sh
 ./sync/patches/values/patch.sh

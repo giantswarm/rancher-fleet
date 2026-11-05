@@ -1,6 +1,6 @@
 apiVersion: v2
 # upstream version
-appVersion: 0.16.1
+appVersion: 0.16.3
 # giantswarm app version
 version: 0.0.0
 name: rancher-fleet
@@ -12,12 +12,12 @@ annotations:
   io.giantswarm.application.managed: "true"
   io.giantswarm.application.team: "rocket"
   io.giantswarm.application.upstream-chart-url: "https://github.com/rancher/fleet/tree/main/charts/fleet"
-  io.giantswarm.application.upstream-chart-version: "0.16.1"
+  io.giantswarm.application.upstream-chart-version: "0.16.3"
 maintainers:
   - name: Team Rocket
     email: team-rocket@giantswarm.io
 dependencies:
   - name: rancher-fleet-crds
-    version: 0.16.1
+    version: 0.16.3
 sources:
   - https://github.com/rancher/fleet
