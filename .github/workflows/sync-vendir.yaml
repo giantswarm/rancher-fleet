@@ -50,6 +50,16 @@ jobs:
           binary_new_name: "yq"
           smoke_test: "${binary} --version"
 
+      - name: Install schemalint
+        uses: giantswarm/install-binary-action@5bef88f65012037dd836117c8d344b21bb559854 # v4.1.0
+        with:
+          binary: "schemalint"
+          # repo: giantswarm/schemalint
+          version: "2.6.3"
+          download_url: "https://github.com/giantswarm/schemalint/releases/download/v2.6.3/schemalint-linux-amd64"
+          binary_new_name: "schemalint"
+          smoke_test: "${binary} --version"
+
       - name: Install schemadocs
         uses: giantswarm/install-binary-action@5bef88f65012037dd836117c8d344b21bb559854 # v4.1.0
         with:
