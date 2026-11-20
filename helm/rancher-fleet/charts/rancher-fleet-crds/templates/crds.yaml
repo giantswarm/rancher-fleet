@@ -3,7 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: bundledeployments.fleet.cattle.io
 spec:
@@ -281,7 +281,13 @@ spec:
                                 nullable: true
                                 type: string
                               jsonPointers:
-                                description: JSONPointers ignore diffs at a certain JSON path.
+                                description: |-
+                                  JSONPointers ignore diffs at the given JSON pointers, e.g. /spec/replicas.
+                                  Each entry must be a non-empty pointer starting with a slash; a
+                                  Kubernetes-style field path such as spec.replicas addresses nothing and is
+                                  rejected. Escaping is the one the JSON patch library applies, which is
+                                  laxer than RFC 6901: "~0" and "~1" are read as "~" and "/", respectively, and any other
+                                  "~" sequence is left as written.
                                 items:
                                   type: string
                                 nullable: true
@@ -291,7 +297,10 @@ spec:
                                 nullable: true
                                 type: string
                               name:
-                                description: Name is the name of the resource to match.
+                                description: |-
+                                  Name is the name of the resource to match. Resources are matched by exact
+                                  name first and, when the name does not match exactly, by matching it as a
+                                  regular expression, so it must always be a valid Go regular expression.
                                 nullable: true
                                 type: string
                               namespace:
@@ -307,11 +316,24 @@ spec:
                                     * "ignore" to remove the entire resource from checks for modifications.
                                   properties:
                                     op:
-                                      description: Op is usually "remove" or "ignore"
+                                      description: |-
+                                        Op is the operation to perform on the matched resource. It must be one of
+                                        the JSON Patch operations "add", "remove", "replace" and "test", or
+                                        Fleet's own "ignore", which removes the entire resource from checks for
+                                        modifications. The JSON Patch operations "copy" and "move" are not
+                                        supported, because an Operation has no "from" field to encode them with.
+                                        Any other value, including an empty one, makes the whole patch fail to
+                                        apply.
                                       nullable: true
                                       type: string
                                     path:
-                                      description: Path is the JSON path to remove. Not needed if Op is "ignore".
+                                      description: |-
+                                        Path is the JSON pointer the operation applies to, e.g. /spec/replicas.
+                                        It must be a non-empty pointer starting with a slash; a Kubernetes-style
+                                        field path such as spec.replicas addresses nothing and is rejected. It is
+                                        escaped like a JSONPointers entry, which is laxer than RFC 6901. Required
+                                        unless Op is "ignore", which drops the whole resource from the comparison
+                                        and never reads the path.
                                       nullable: true
                                       type: string
                                     value:
@@ -664,7 +686,13 @@ spec:
                                 nullable: true
                                 type: string
                               jsonPointers:
-                                description: JSONPointers ignore diffs at a certain JSON path.
+                                description: |-
+                                  JSONPointers ignore diffs at the given JSON pointers, e.g. /spec/replicas.
+                                  Each entry must be a non-empty pointer starting with a slash; a
+                                  Kubernetes-style field path such as spec.replicas addresses nothing and is
+                                  rejected. Escaping is the one the JSON patch library applies, which is
+                                  laxer than RFC 6901: "~0" and "~1" are read as "~" and "/", respectively, and any other
+                                  "~" sequence is left as written.
                                 items:
                                   type: string
                                 nullable: true
@@ -674,7 +702,10 @@ spec:
                                 nullable: true
                                 type: string
                               name:
-                                description: Name is the name of the resource to match.
+                                description: |-
+                                  Name is the name of the resource to match. Resources are matched by exact
+                                  name first and, when the name does not match exactly, by matching it as a
+                                  regular expression, so it must always be a valid Go regular expression.
                                 nullable: true
                                 type: string
                               namespace:
@@ -690,11 +721,24 @@ spec:
                                     * "ignore" to remove the entire resource from checks for modifications.
                                   properties:
                                     op:
-                                      description: Op is usually "remove" or "ignore"
+                                      description: |-
+                                        Op is the operation to perform on the matched resource. It must be one of
+                                        the JSON Patch operations "add", "remove", "replace" and "test", or
+                                        Fleet's own "ignore", which removes the entire resource from checks for
+                                        modifications. The JSON Patch operations "copy" and "move" are not
+                                        supported, because an Operation has no "from" field to encode them with.
+                                        Any other value, including an empty one, makes the whole patch fail to
+                                        apply.
                                       nullable: true
                                       type: string
                                     path:
-                                      description: Path is the JSON path to remove. Not needed if Op is "ignore".
+                                      description: |-
+                                        Path is the JSON pointer the operation applies to, e.g. /spec/replicas.
+                                        It must be a non-empty pointer starting with a slash; a Kubernetes-style
+                                        field path such as spec.replicas addresses nothing and is rejected. It is
+                                        escaped like a JSONPointers entry, which is laxer than RFC 6901. Required
+                                        unless Op is "ignore", which drops the whole resource from the comparison
+                                        and never reads the path.
                                       nullable: true
                                       type: string
                                     value:
@@ -1151,7 +1195,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: bundlenamespacemappings.fleet.cattle.io
 spec:
@@ -1291,7 +1335,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: bundles.fleet.cattle.io
 spec:
@@ -1513,7 +1557,13 @@ spec:
                             nullable: true
                             type: string
                           jsonPointers:
-                            description: JSONPointers ignore diffs at a certain JSON path.
+                            description: |-
+                              JSONPointers ignore diffs at the given JSON pointers, e.g. /spec/replicas.
+                              Each entry must be a non-empty pointer starting with a slash; a
+                              Kubernetes-style field path such as spec.replicas addresses nothing and is
+                              rejected. Escaping is the one the JSON patch library applies, which is
+                              laxer than RFC 6901: "~0" and "~1" are read as "~" and "/", respectively, and any other
+                              "~" sequence is left as written.
                             items:
                               type: string
                             nullable: true
@@ -1523,7 +1573,10 @@ spec:
                             nullable: true
                             type: string
                           name:
-                            description: Name is the name of the resource to match.
+                            description: |-
+                              Name is the name of the resource to match. Resources are matched by exact
+                              name first and, when the name does not match exactly, by matching it as a
+                              regular expression, so it must always be a valid Go regular expression.
                             nullable: true
                             type: string
                           namespace:
@@ -1539,11 +1592,24 @@ spec:
                                 * "ignore" to remove the entire resource from checks for modifications.
                               properties:
                                 op:
-                                  description: Op is usually "remove" or "ignore"
+                                  description: |-
+                                    Op is the operation to perform on the matched resource. It must be one of
+                                    the JSON Patch operations "add", "remove", "replace" and "test", or
+                                    Fleet's own "ignore", which removes the entire resource from checks for
+                                    modifications. The JSON Patch operations "copy" and "move" are not
+                                    supported, because an Operation has no "from" field to encode them with.
+                                    Any other value, including an empty one, makes the whole patch fail to
+                                    apply.
                                   nullable: true
                                   type: string
                                 path:
-                                  description: Path is the JSON path to remove. Not needed if Op is "ignore".
+                                  description: |-
+                                    Path is the JSON pointer the operation applies to, e.g. /spec/replicas.
+                                    It must be a non-empty pointer starting with a slash; a Kubernetes-style
+                                    field path such as spec.replicas addresses nothing and is rejected. It is
+                                    escaped like a JSONPointers entry, which is laxer than RFC 6901. Required
+                                    unless Op is "ignore", which drops the whole resource from the comparison
+                                    and never reads the path.
                                   nullable: true
                                   type: string
                                 value:
@@ -2326,7 +2392,13 @@ spec:
                                   nullable: true
                                   type: string
                                 jsonPointers:
-                                  description: JSONPointers ignore diffs at a certain JSON path.
+                                  description: |-
+                                    JSONPointers ignore diffs at the given JSON pointers, e.g. /spec/replicas.
+                                    Each entry must be a non-empty pointer starting with a slash; a
+                                    Kubernetes-style field path such as spec.replicas addresses nothing and is
+                                    rejected. Escaping is the one the JSON patch library applies, which is
+                                    laxer than RFC 6901: "~0" and "~1" are read as "~" and "/", respectively, and any other
+                                    "~" sequence is left as written.
                                   items:
                                     type: string
                                   nullable: true
@@ -2336,7 +2408,10 @@ spec:
                                   nullable: true
                                   type: string
                                 name:
-                                  description: Name is the name of the resource to match.
+                                  description: |-
+                                    Name is the name of the resource to match. Resources are matched by exact
+                                    name first and, when the name does not match exactly, by matching it as a
+                                    regular expression, so it must always be a valid Go regular expression.
                                   nullable: true
                                   type: string
                                 namespace:
@@ -2352,11 +2427,24 @@ spec:
                                       * "ignore" to remove the entire resource from checks for modifications.
                                     properties:
                                       op:
-                                        description: Op is usually "remove" or "ignore"
+                                        description: |-
+                                          Op is the operation to perform on the matched resource. It must be one of
+                                          the JSON Patch operations "add", "remove", "replace" and "test", or
+                                          Fleet's own "ignore", which removes the entire resource from checks for
+                                          modifications. The JSON Patch operations "copy" and "move" are not
+                                          supported, because an Operation has no "from" field to encode them with.
+                                          Any other value, including an empty one, makes the whole patch fail to
+                                          apply.
                                         nullable: true
                                         type: string
                                       path:
-                                        description: Path is the JSON path to remove. Not needed if Op is "ignore".
+                                        description: |-
+                                          Path is the JSON pointer the operation applies to, e.g. /spec/replicas.
+                                          It must be a non-empty pointer starting with a slash; a Kubernetes-style
+                                          field path such as spec.replicas addresses nothing and is rejected. It is
+                                          escaped like a JSONPointers entry, which is laxer than RFC 6901. Required
+                                          unless Op is "ignore", which drops the whole resource from the comparison
+                                          and never reads the path.
                                         nullable: true
                                         type: string
                                       value:
@@ -3075,7 +3163,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: clustergroups.fleet.cattle.io
 spec:
@@ -3431,7 +3519,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: clusterregistrations.fleet.cattle.io
 spec:
@@ -3519,7 +3607,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: clusterregistrationtokens.fleet.cattle.io
 spec:
@@ -3592,7 +3680,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: clusters.fleet.cattle.io
 spec:
@@ -4547,7 +4635,9 @@ spec:
                             description: Selects a key of a ConfigMap.
                             properties:
                               key:
-                                description: The key to select.
+                                description: |-
+                                  The key to select from the ConfigMap's Data field.
+                                  Keys in the BinaryData field are not currently propagated to container env vars.
                                 type: string
                               name:
                                 default: ""
@@ -4880,6 +4970,10 @@ spec:
                       type: string
                     namespace:
                       description: Namespace is the namespace of the agent deployment, e.g. "cattle-fleet-system".
+                      nullable: true
+                      type: string
+                    version:
+                      description: Version is the agent's version as reported by the running agent binary.
                       nullable: true
                       type: string
                   type: object
@@ -5229,7 +5323,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: contents.fleet.cattle.io
 spec:
@@ -5293,7 +5387,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: gitreporestrictions.fleet.cattle.io
 spec:
@@ -5433,7 +5527,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: gitrepos.fleet.cattle.io
 spec:
@@ -6156,7 +6250,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: helmops.fleet.cattle.io
 spec:
@@ -6382,7 +6476,13 @@ spec:
                             nullable: true
                             type: string
                           jsonPointers:
-                            description: JSONPointers ignore diffs at a certain JSON path.
+                            description: |-
+                              JSONPointers ignore diffs at the given JSON pointers, e.g. /spec/replicas.
+                              Each entry must be a non-empty pointer starting with a slash; a
+                              Kubernetes-style field path such as spec.replicas addresses nothing and is
+                              rejected. Escaping is the one the JSON patch library applies, which is
+                              laxer than RFC 6901: "~0" and "~1" are read as "~" and "/", respectively, and any other
+                              "~" sequence is left as written.
                             items:
                               type: string
                             nullable: true
@@ -6392,7 +6492,10 @@ spec:
                             nullable: true
                             type: string
                           name:
-                            description: Name is the name of the resource to match.
+                            description: |-
+                              Name is the name of the resource to match. Resources are matched by exact
+                              name first and, when the name does not match exactly, by matching it as a
+                              regular expression, so it must always be a valid Go regular expression.
                             nullable: true
                             type: string
                           namespace:
@@ -6408,11 +6511,24 @@ spec:
                                 * "ignore" to remove the entire resource from checks for modifications.
                               properties:
                                 op:
-                                  description: Op is usually "remove" or "ignore"
+                                  description: |-
+                                    Op is the operation to perform on the matched resource. It must be one of
+                                    the JSON Patch operations "add", "remove", "replace" and "test", or
+                                    Fleet's own "ignore", which removes the entire resource from checks for
+                                    modifications. The JSON Patch operations "copy" and "move" are not
+                                    supported, because an Operation has no "from" field to encode them with.
+                                    Any other value, including an empty one, makes the whole patch fail to
+                                    apply.
                                   nullable: true
                                   type: string
                                 path:
-                                  description: Path is the JSON path to remove. Not needed if Op is "ignore".
+                                  description: |-
+                                    Path is the JSON pointer the operation applies to, e.g. /spec/replicas.
+                                    It must be a non-empty pointer starting with a slash; a Kubernetes-style
+                                    field path such as spec.replicas addresses nothing and is rejected. It is
+                                    escaped like a JSONPointers entry, which is laxer than RFC 6901. Required
+                                    unless Op is "ignore", which drops the whole resource from the comparison
+                                    and never reads the path.
                                   nullable: true
                                   type: string
                                 value:
@@ -7220,7 +7336,13 @@ spec:
                                   nullable: true
                                   type: string
                                 jsonPointers:
-                                  description: JSONPointers ignore diffs at a certain JSON path.
+                                  description: |-
+                                    JSONPointers ignore diffs at the given JSON pointers, e.g. /spec/replicas.
+                                    Each entry must be a non-empty pointer starting with a slash; a
+                                    Kubernetes-style field path such as spec.replicas addresses nothing and is
+                                    rejected. Escaping is the one the JSON patch library applies, which is
+                                    laxer than RFC 6901: "~0" and "~1" are read as "~" and "/", respectively, and any other
+                                    "~" sequence is left as written.
                                   items:
                                     type: string
                                   nullable: true
@@ -7230,7 +7352,10 @@ spec:
                                   nullable: true
                                   type: string
                                 name:
-                                  description: Name is the name of the resource to match.
+                                  description: |-
+                                    Name is the name of the resource to match. Resources are matched by exact
+                                    name first and, when the name does not match exactly, by matching it as a
+                                    regular expression, so it must always be a valid Go regular expression.
                                   nullable: true
                                   type: string
                                 namespace:
@@ -7246,11 +7371,24 @@ spec:
                                       * "ignore" to remove the entire resource from checks for modifications.
                                     properties:
                                       op:
-                                        description: Op is usually "remove" or "ignore"
+                                        description: |-
+                                          Op is the operation to perform on the matched resource. It must be one of
+                                          the JSON Patch operations "add", "remove", "replace" and "test", or
+                                          Fleet's own "ignore", which removes the entire resource from checks for
+                                          modifications. The JSON Patch operations "copy" and "move" are not
+                                          supported, because an Operation has no "from" field to encode them with.
+                                          Any other value, including an empty one, makes the whole patch fail to
+                                          apply.
                                         nullable: true
                                         type: string
                                       path:
-                                        description: Path is the JSON path to remove. Not needed if Op is "ignore".
+                                        description: |-
+                                          Path is the JSON pointer the operation applies to, e.g. /spec/replicas.
+                                          It must be a non-empty pointer starting with a slash; a Kubernetes-style
+                                          field path such as spec.replicas addresses nothing and is rejected. It is
+                                          escaped like a JSONPointers entry, which is laxer than RFC 6901. Required
+                                          unless Op is "ignore", which drops the whole resource from the comparison
+                                          and never reads the path.
                                         nullable: true
                                         type: string
                                       value:
@@ -7913,7 +8051,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: imagescans.fleet.cattle.io
 spec:
@@ -8102,7 +8240,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: policies.fleet.cattle.io
 spec:
@@ -8142,6 +8280,47 @@ spec:
                 through other means (ValidatingAdmissionPolicy, Kyverno, etc.) can
                 set this to true.
               type: boolean
+            allowedDownstreamResources:
+              description: |-
+                AllowedDownstreamResources lists the Secrets and ConfigMaps that GitRepo,
+                HelmOp, and Bundle resources may copy to downstream clusters through
+                downstreamResources. The Fleet controller reads those objects with its
+                own credentials, so whoever creates the resource needs no access to them.
+                This list decides which of them may be copied.
+
+                If non-empty, every Secret and ConfigMap in downstreamResources must
+                match an entry. If empty, none may be copied when RequireServiceAccount
+                is true, and all may be copied otherwise.
+              items:
+                description: |-
+                  AllowedDownstreamResource allows Secrets or ConfigMaps to be copied to
+                  downstream clusters, either by exact name or by name pattern.
+                properties:
+                  kind:
+                    description: Kind is the kind of the allowed objects.
+                    enum:
+                      - Secret
+                      - ConfigMap
+                    type: string
+                  name:
+                    description: Name allows the object with exactly this name.
+                    minLength: 1
+                    type: string
+                  namePattern:
+                    description: |-
+                      NamePattern is a regex pattern that allows every object whose name
+                      matches it. The pattern is anchored as ^(?:<pattern>)$, so explicit ^ and
+                      $ anchors are not required.
+                    minLength: 1
+                    type: string
+                required:
+                  - kind
+                type: object
+                x-kubernetes-validations:
+                  - message: exactly one of name or namePattern must be set
+                    rule: has(self.name) != has(self.namePattern)
+              nullable: true
+              type: array
             allowedServiceAccounts:
               description: |-
                 AllowedServiceAccounts lists service accounts that may be used.
@@ -8251,7 +8430,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.21.0
+    controller-gen.kubebuilder.io/version: v0.22.0
     helm.sh/resource-policy: keep
   name: schedules.fleet.cattle.io
 spec:
