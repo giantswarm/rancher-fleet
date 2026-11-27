@@ -2,10 +2,10 @@ apiVersion: vendir.k14s.io/v1alpha1
 directories:
 - contents:
   - git:
-      commitTitle: Update go toolchain directive to v1.26.10 [SECURITY] (#5984)...
-      sha: 2137e669ebec4d397262df1149edb65bceaa4466
+      commitTitle: Wait for new leader after terminating pods (#6139) (#6147)...
+      sha: 816ee3f7f31269bfb120f8cd130b6c3bbad66106
       tags:
-      - pkg/helmvalues/v0.16.3
+      - pkg/helmvalues/v0.17.0
     path: fleet
   path: vendor
 - contents:
