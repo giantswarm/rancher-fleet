@@ -210,11 +210,32 @@
         "debugLevel": {
             "type": "integer"
         },
+        "deploymentEvents": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "debounce": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "maxCauses": {
+                    "type": "integer"
+                },
+                "minInterval": {
+                    "type": "string"
+                },
+                "perDeployment": {
+                    "type": "boolean"
+                },
+                "reportRecovery": {
+                    "type": "boolean"
+                }
+            }
+        },
         "disableSecurityContext": {
             "type": "boolean"
-        },
-        "externalDNSIP": {
-            "type": "string"
         },
         "garbageCollectionInterval": {
             "type": "string"
@@ -248,8 +269,7 @@
         },
         "global": {
             "type": "object",
-            "description": "Global values shared between all subcharts and the platform.",
-            "additionalProperties": true,
+            "additionalProperties": false,
             "properties": {
                 "cattle": {
                     "type": "object",
@@ -262,16 +282,8 @@
                             "type": "string"
                         }
                     }
-                },
-                "podSecurityStandards": {
-                    "type": "object",
-                    "additionalProperties": true
                 }
             }
-        },
-        "helm": {
-            "type": "object",
-            "additionalProperties": true
         },
         "helmops": {
             "type": "object",
@@ -329,9 +341,6 @@
                     "type": "string"
                 }
             }
-        },
-        "managementCluster": {
-            "type": "string"
         },
         "metrics": {
             "type": "object",
